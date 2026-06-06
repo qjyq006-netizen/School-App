@@ -1,0 +1,15 @@
+name: Build APK
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build APK with Buildozer
+        uses: ArtemShatalov/buildozer-action@v1
+        with:
+          command: buildozer -v android debug
+          repository_root: .
